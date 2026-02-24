@@ -1,5 +1,5 @@
 {% set name = "stellarmesh" %}
-{% set version = "2.0.0" %}
+{% set version = "2.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 7152e252fd7b90516e9a3f5ac8c7a40364bc60bc8481db0f1ecf2efb0ad8854c
+  sha256: 3f6df8686a4006cc03a1f340193cacdd7b816bdb5f18cfe852464b4cd6d04831
 
 build:
   number: 0
@@ -16,18 +16,20 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.11
     - pip
-    - setuptools >=80
-    - setuptools-scm >=8
+    - setuptools >=80,<81
+    - setuptools-scm >=9.2.0,<10
   run:
-    - python
+    - python >=3.11
     - python-gmsh >=4
-    - ocp >=7.7.2.1
+    - ocp >=7.8
     - moab
+    - meshio >=5.3.5,<6
+    - h5py
+    - netcdf4
     - numpy
     - mmgsuite
-    - meshio
     - libgl  # [linux]
 
 test:
